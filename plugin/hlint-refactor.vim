@@ -18,6 +18,12 @@ function! ApplyAllSuggestions()
   call cursor(l, c)
 endfunction
 
+ 
+if ( ! exists('g:hlintRefactor#disableDefaultKeybindings') || 
+   \ ! g:hlintRefactor#disableDefaultKeybindings )
 
-map <silent> to :call ApplyOneSuggestion()<CR>
-map <silent> ta :call ApplyAllSuggestions()<CR>
+  map <silent> to :call ApplyOneSuggestion()<CR>
+  map <silent> ta :call ApplyAllSuggestions()<CR>
+
+endif
+
