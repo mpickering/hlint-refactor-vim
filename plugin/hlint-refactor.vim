@@ -2,7 +2,7 @@
 function! ApplyOneSuggestion()
   let l = line(".")
   let c = col(".")
-  let l:filter = "%! hlint - --refactor  --refactor-options=\"--pos ".l.','.c."\""
+  let l:filter = "%! hlint - --refactor  --refactor-options=\"--pos ".l.','.c."\" 2>/dev/null"
   execute l:filter
   silent if v:shell_error == 1| undo | endif
   call cursor(l, c)
@@ -12,7 +12,7 @@ endfunction
 function! ApplyAllSuggestions()
   let l = line(".")
   let c = col(".")
-  let l:filter = "%! hlint - --refactor"
+  let l:filter = "%! hlint - --refactor 2>/dev/null"
   execute l:filter
   silent if v:shell_error == 1| undo | endif"
   call cursor(l, c)
